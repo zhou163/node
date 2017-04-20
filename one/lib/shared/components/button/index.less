@@ -1,0 +1,117 @@
+@import '~styles/colors.less';
+
+.button {
+  cursor: pointer;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 15px;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 3px;
+  outline: 0;
+  border: 0;
+
+  :global {
+    i, span {
+      display: inline-block;
+      vertical-align: top;
+    }
+    i {
+      font-size: 15px;
+      line-height: 15px;
+      margin-right: 7px;
+    }
+  }
+}
+
+.full {
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-right: 0;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.primary {
+  background-color: @primary;
+  color: #ffffff;
+
+  &:hover {
+    background-color: @primaryDarker;
+  }
+}
+
+.alert {
+  background-color: @alert;
+  color: #ffffff;
+}
+
+.big {
+  font-size: 12px;
+  padding: 15px 15px;
+}
+
+.thin {
+  font-weight: 300;
+}
+
+.bordered {
+  text-transform: uppercase;
+  border: 1px solid #ccc;
+
+  &.primary {
+    border-color: @primary;
+    font-size: 16px;
+  }
+}
+
+.grey {
+  border-color: fade(#ffffff, 20%);
+  background-color: fade(#ffffff, 5%);
+}
+
+.noBackground {
+  background-color: transparent;
+  text-transform: uppercase;
+
+  &.primary {
+    color: @primary;
+    font-size: 16px;
+  }
+
+  &.alert {
+    color: @alert;
+    font-size: 16px;
+  }
+
+  &.grey {
+    color: @adminText;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.small {
+  padding: 5px 8px;
+  font-size: 12px;
+  :global {
+    i {
+      font-size: 11px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.smallFont {
+  font-size: 12px !important;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
