@@ -31,8 +31,11 @@ app.use(session({
     store: new MongoStore({mongooseConnection: mongoose.connection})   //设置session 存储到mongodb 数据库 持久化
 }));
 
-app.use(express.static('public'));
-//app.use(express.static(path.join('public')));
+// app.use(express.static('public'));
+
+app.use(express.static(path.join(__dirname, 'public')));
+console.log("__dirname===="+__dirname);
+// app.use(express.static(path.join('public')));
 // Passport
 app.use(passport.initialize());  //初始化 passport  认证中间件
 app.use(passport.session());    // 使用 passport   管理session
