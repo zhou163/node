@@ -6,6 +6,7 @@ import reducers from 'reducers';
 import getDefaultFavicon from 'helpers/default-favicon';
 import userModel from '../../models/user';
 import passport from 'passport';
+import logger from 'logger';
 
 const authRouterWeb = new Router();
 
@@ -100,7 +101,7 @@ authRouterWeb.post('/web/register', injectScript,(req, res) => {
     let reconfirmPassword = req.body.reconfirmPassword;
     let name = req.body.name;
     let email = req.body.email;
-
+ 
     if(!password || !username){
  return res.status(500).send( {error: 500,
         message: '输入不能为空'});
@@ -121,11 +122,13 @@ authRouterWeb.post('/web/register', injectScript,(req, res) => {
 
         if(err){
     
-             return res.status(500).send( { error: 500,
+              res.status(500).send( { error: 500,
         message: err}
                );
         }else{
-            return res.status(200).end;
+           
+            res.status(200).end();
+           
         }
 
 

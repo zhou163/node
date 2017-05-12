@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique:true
+        
     },
     name: {
         type: String,
@@ -18,9 +19,9 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true,
         trim: true,
         required: true
+        // unique:true
     },
     date: {
         type: Date,
@@ -28,7 +29,7 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.plugin(passportLocalMongoose);
+// userSchema.plugin(passportLocalMongoose);
 
 const UserModel = mongoose.model('User', userSchema);
 

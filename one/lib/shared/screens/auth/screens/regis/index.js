@@ -1,6 +1,7 @@
 import request from 'superagent';
 import React, {PropTypes} from 'react';
 import Component from 'components/component';
+import logger from 'logger';
 
 import Register from './components/register';
 
@@ -20,6 +21,7 @@ export default class registerContainer extends Component {
     }
 
     onSubmit (event) {
+       
         event.preventDefault();
         const {username, password,reconfirmPassword,name,email} = this.state;
 
@@ -29,15 +31,21 @@ export default class registerContainer extends Component {
             .set('Accept', 'application/json')
             .send({username, password,reconfirmPassword,name,email})
             .end((error, res) => {
+                
                 if (error) {
                     this.setState({
                         error: JSON.stringify(res.body.message)
                         
+                        
                     });
                 } else {
+                    // window.location.href = '/web/login';
                     window.location.href = '/web/login';
+                   
                 }
             });
+
+
     }
 
     fieldChange (id, value) {

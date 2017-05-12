@@ -34,7 +34,6 @@ app.use(session({
 app.use(express.static('public'));
 
 // app.use(express.static(path.join(__dirname, 'public')));
-console.log("__dirname===="+__dirname);
 // app.use(express.static(path.join('public')));
 // Passport
 app.use(passport.initialize());  //初始化 passport  认证中间件

@@ -71,15 +71,15 @@
 
 	__webpack_require__(39);
 
-	var _service = __webpack_require__(15);
+	var _service = __webpack_require__(16);
 
 	var _service2 = _interopRequireDefault(_service);
 
-	var _mongoose = __webpack_require__(4);
+	var _mongoose = __webpack_require__(5);
 
 	var _mongoose2 = _interopRequireDefault(_mongoose);
 
-	var _logger = __webpack_require__(24);
+	var _logger = __webpack_require__(3);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
@@ -87,7 +87,7 @@
 
 	var _padStart2 = _interopRequireDefault(_padStart);
 
-	var _config = __webpack_require__(6);
+	var _config = __webpack_require__(7);
 
 	var _config2 = _interopRequireDefault(_config);
 
@@ -175,24 +175,53 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = require("express");
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _winston = __webpack_require__(58);
+
+	var _winston2 = _interopRequireDefault(_winston);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// 异步日志库
+	var build = {
+
+	  level: 'debug',
+	  transports: [new _winston2.default.transports.Console(), new _winston2.default.transports.File({
+	    name: 'error-file',
+	    filename: 'filelog-error.log',
+	    level: 'error'
+	  })]
+	};
+
+	exports.default = new _winston2.default.Logger(build);
 
 /***/ },
 /* 4 */
 /***/ function(module, exports) {
 
-	module.exports = require("mongoose");
+	module.exports = require("express");
 
 /***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = require("passport");
+	module.exports = require("mongoose");
 
 /***/ },
 /* 6 */
+/***/ function(module, exports) {
+
+	module.exports = require("passport");
+
+/***/ },
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -222,7 +251,7 @@
 	});
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -231,11 +260,11 @@
 	    value: true
 	});
 
-	var _mongoose = __webpack_require__(4);
+	var _mongoose = __webpack_require__(5);
 
 	var _mongoose2 = _interopRequireDefault(_mongoose);
 
-	var _passport = __webpack_require__(5);
+	var _passport = __webpack_require__(6);
 
 	var _passport2 = _interopRequireDefault(_passport);
 
@@ -243,7 +272,7 @@
 
 	var _passportLocalMongoose2 = _interopRequireDefault(_passportLocalMongoose);
 
-	var _passportLocal = __webpack_require__(11);
+	var _passportLocal = __webpack_require__(12);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -252,6 +281,7 @@
 	        type: String,
 	        required: true,
 	        unique: true
+
 	    },
 	    name: {
 	        type: String,
@@ -262,9 +292,9 @@
 	    },
 	    email: {
 	        type: String,
-	        unique: true,
 	        trim: true,
 	        required: true
+	        // unique:true
 	    },
 	    date: {
 	        type: Date,
@@ -272,7 +302,7 @@
 	    }
 	});
 
-	userSchema.plugin(_passportLocalMongoose2.default);
+	// userSchema.plugin(passportLocalMongoose);
 
 	var UserModel = _mongoose2.default.model('User', userSchema);
 
@@ -283,7 +313,7 @@
 	exports.default = UserModel;
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -389,7 +419,7 @@
 	exports.default = Button;
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -416,38 +446,38 @@
 	}
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 	module.exports = {"title":"_1AGoA","subTitle":"_1tR60","form":"_13g_K","error":"_5gTfa"};
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = require("passport-local");
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = require("redux");
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = require("redux-router");
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = require("superagent");
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -456,7 +486,7 @@
 	    value: true
 	});
 
-	var _express = __webpack_require__(3);
+	var _express = __webpack_require__(4);
 
 	var _express2 = _interopRequireDefault(_express);
 
@@ -472,7 +502,7 @@
 
 	var _path2 = _interopRequireDefault(_path);
 
-	var _auth = __webpack_require__(16);
+	var _auth = __webpack_require__(17);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
@@ -484,23 +514,23 @@
 
 	var _expressSession2 = _interopRequireDefault(_expressSession);
 
-	var _mongoose = __webpack_require__(4);
+	var _mongoose = __webpack_require__(5);
 
 	var _mongoose2 = _interopRequireDefault(_mongoose);
 
-	var _config = __webpack_require__(6);
+	var _config = __webpack_require__(7);
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _passport = __webpack_require__(5);
+	var _passport = __webpack_require__(6);
 
 	var _passport2 = _interopRequireDefault(_passport);
 
-	var _auth3 = __webpack_require__(17);
+	var _auth3 = __webpack_require__(18);
 
 	var _auth4 = _interopRequireDefault(_auth3);
 
-	var _user = __webpack_require__(7);
+	var _user = __webpack_require__(8);
 
 	var _user2 = _interopRequireDefault(_user);
 
@@ -509,7 +539,7 @@
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 	var app = (0, _express2.default)();
-	var LocalStrategy = __webpack_require__(11).Strategy;
+	var LocalStrategy = __webpack_require__(12).Strategy;
 
 	app.use((0, _morgan2.default)('short')); //http 请求 日志中间件 
 	app.use(_bodyParser2.default.urlencoded({ extended: false })); //  处理form表单数据。设置可扩展  可以接受对象类型数据结构。如果不设置 只能接受 string | array 
@@ -528,7 +558,10 @@
 	    store: new MongoStore({ mongooseConnection: _mongoose2.default.connection }) //设置session 存储到mongodb 数据库 持久化
 	}));
 
-	app.use(_express2.default.static(_path2.default.resolve('public')));
+	app.use(_express2.default.static('public'));
+
+	// app.use(express.static(path.join(__dirname, 'public')));
+	// app.use(express.static(path.join('public')));
 	// Passport
 	app.use(_passport2.default.initialize()); //初始化 passport  认证中间件
 	app.use(_passport2.default.session()); // 使用 passport   管理session
@@ -629,7 +662,7 @@
 	exports.default = app;
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -638,7 +671,7 @@
 	    value: true
 	});
 
-	var _express = __webpack_require__(3);
+	var _express = __webpack_require__(4);
 
 	var authRouterApp = new _express.Router();
 
@@ -656,7 +689,7 @@
 	exports.default = authRouterApp;
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -665,13 +698,13 @@
 	    value: true
 	});
 
-	var _express = __webpack_require__(3);
+	var _express = __webpack_require__(4);
 
-	var _routeHandler = __webpack_require__(23);
+	var _routeHandler = __webpack_require__(24);
 
 	var _routeHandler2 = _interopRequireDefault(_routeHandler);
 
-	var _getMarkup = __webpack_require__(22);
+	var _getMarkup = __webpack_require__(23);
 
 	var _getMarkup2 = _interopRequireDefault(_getMarkup);
 
@@ -683,17 +716,21 @@
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _defaultFavicon = __webpack_require__(21);
+	var _defaultFavicon = __webpack_require__(22);
 
 	var _defaultFavicon2 = _interopRequireDefault(_defaultFavicon);
 
-	var _user = __webpack_require__(7);
+	var _user = __webpack_require__(8);
 
 	var _user2 = _interopRequireDefault(_user);
 
-	var _passport = __webpack_require__(5);
+	var _passport = __webpack_require__(6);
 
 	var _passport2 = _interopRequireDefault(_passport);
+
+	var _logger = __webpack_require__(3);
+
+	var _logger2 = _interopRequireDefault(_logger);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -779,7 +816,7 @@
 	    var reconfirmPassword = req.body.reconfirmPassword;
 	    var name = req.body.name;
 	    var email = req.body.email;
-
+	    _logger2.default.debug("/web/register 被请求");
 	    if (!password || !username) {
 	        return res.status(500).send({ error: 500,
 	            message: '输入不能为空' });
@@ -798,10 +835,11 @@
 
 	        if (err) {
 
-	            return res.status(500).send({ error: 500,
+	            res.status(500).send({ error: 500,
 	                message: err });
 	        } else {
-	            return res.status(200).end;
+	            _logger2.default.debug("注册返回200");
+	            res.status(200).end();
 	        }
 	    });
 	});
@@ -809,7 +847,7 @@
 	exports.default = authRouterWeb;
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -963,7 +1001,7 @@
 	};
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1051,7 +1089,7 @@
 	exports.default = Html;
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1069,7 +1107,7 @@
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _redux = __webpack_require__(12);
+	var _redux = __webpack_require__(13);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1101,7 +1139,7 @@
 	}
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1122,7 +1160,7 @@
 	}
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1139,7 +1177,7 @@
 
 	var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
-	var _html = __webpack_require__(19);
+	var _html = __webpack_require__(20);
 
 	var _html2 = _interopRequireDefault(_html);
 
@@ -1151,7 +1189,7 @@
 
 	var _reactRedux = __webpack_require__(52);
 
-	var _reduxRouter = __webpack_require__(13);
+	var _reduxRouter = __webpack_require__(14);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1181,7 +1219,7 @@
 	}
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1191,7 +1229,7 @@
 	});
 	exports.default = routeHandler;
 
-	var _configureStore = __webpack_require__(20);
+	var _configureStore = __webpack_require__(21);
 
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 
@@ -1245,35 +1283,6 @@
 	}
 
 /***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _winston = __webpack_require__(58);
-
-	var _winston2 = _interopRequireDefault(_winston);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// 异步日志库
-	var build = {
-
-	  level: 'debug',
-	  transports: [new _winston2.default.transports.Console(), new _winston2.default.transports.File({
-	    name: 'error-file',
-	    filename: 'filelog-error.log',
-	    level: 'error'
-	  })]
-	};
-
-	exports.default = new _winston2.default.Logger(build);
-
-/***/ },
 /* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -1284,9 +1293,9 @@
 	});
 	exports.reducersToCombine = undefined;
 
-	var _redux = __webpack_require__(12);
+	var _redux = __webpack_require__(13);
 
-	var _reduxRouter = __webpack_require__(13);
+	var _reduxRouter = __webpack_require__(14);
 
 	var _user = __webpack_require__(26);
 
@@ -1313,7 +1322,7 @@
 	});
 	exports.default = userReducer;
 
-	var _actions = __webpack_require__(18);
+	var _actions = __webpack_require__(19);
 
 	var _actions2 = _interopRequireDefault(_actions);
 
@@ -1566,11 +1575,11 @@
 
 	var _desc, _value, _class, _class2, _temp;
 
-	var _auth = __webpack_require__(10);
+	var _auth = __webpack_require__(11);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
-	var _button = __webpack_require__(8);
+	var _button = __webpack_require__(9);
 
 	var _button2 = _interopRequireDefault(_button);
 
@@ -1582,7 +1591,7 @@
 
 	var _component2 = _interopRequireDefault(_component);
 
-	var _bind = __webpack_require__(9);
+	var _bind = __webpack_require__(10);
 
 	var _bind2 = _interopRequireDefault(_bind);
 
@@ -1716,7 +1725,7 @@
 
 	var _class, _temp;
 
-	var _superagent = __webpack_require__(14);
+	var _superagent = __webpack_require__(15);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -1820,11 +1829,11 @@
 
 	var _desc, _value, _class, _class2, _temp;
 
-	var _auth = __webpack_require__(10);
+	var _auth = __webpack_require__(11);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
-	var _button = __webpack_require__(8);
+	var _button = __webpack_require__(9);
 
 	var _button2 = _interopRequireDefault(_button);
 
@@ -1836,7 +1845,7 @@
 
 	var _component2 = _interopRequireDefault(_component);
 
-	var _bind = __webpack_require__(9);
+	var _bind = __webpack_require__(10);
 
 	var _bind2 = _interopRequireDefault(_bind);
 
@@ -2018,7 +2027,7 @@
 
 	var _class, _temp;
 
-	var _superagent = __webpack_require__(14);
+	var _superagent = __webpack_require__(15);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -2029,6 +2038,10 @@
 	var _component = __webpack_require__(2);
 
 	var _component2 = _interopRequireDefault(_component);
+
+	var _logger = __webpack_require__(3);
+
+	var _logger2 = _interopRequireDefault(_logger);
 
 	var _register = __webpack_require__(32);
 
@@ -2079,12 +2092,14 @@
 
 
 	            _superagent2.default.post('/web/register').set('Content-Type', 'application/json').set('Accept', 'application/json').send({ username: username, password: password, reconfirmPassword: reconfirmPassword, name: name, email: email }).end(function (error, res) {
+
 	                if (error) {
 	                    _this2.setState({
 	                        error: JSON.stringify(res.body.message)
 
 	                    });
 	                } else {
+	                    // window.location.href = '/web/login';
 	                    window.location.href = '/web/login';
 	                }
 	            });
